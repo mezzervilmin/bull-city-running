@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -275,6 +276,7 @@ export interface Media {
     };
     [k: string]: unknown;
   } | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -624,6 +626,7 @@ export interface Form {
             label?: string | null;
             width?: number | null;
             defaultValue?: string | null;
+            placeholder?: string | null;
             options?:
               | {
                   label: string;
@@ -1152,6 +1155,7 @@ export interface PostsSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1355,6 +1359,7 @@ export interface FormsSelect<T extends boolean = true> {
               label?: T;
               width?: T;
               defaultValue?: T;
+              placeholder?: T;
               options?:
                 | T
                 | {
@@ -1535,21 +1540,25 @@ export interface Header {
   id: string;
   navItems?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
+        title: string;
+        links: {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: string | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: string | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+          };
+          id?: string | null;
+        }[];
         id?: string | null;
       }[]
     | null;
@@ -1593,14 +1602,20 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
-        link?:
+        title?: T;
+        links?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };
