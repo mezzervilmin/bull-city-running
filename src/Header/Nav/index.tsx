@@ -5,45 +5,40 @@ import React from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
 
   return (
-    <div className="grow flex justify-center items-center">
-      <NavigationMenu>
-        <NavigationMenuList>
-          {navItems.map((menu, i) => {
+    <div className="flex flex-1 items-center justify-end md:justify-between">
+      <nav aria-label="Global" className="hidden md:block">
+        <div className="flex items-center gap-8 text-sm">
+          {navItems.map((menu) => {
             return (
-              <NavigationMenuItem key={menu.id}>
-                <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  {menu.links.map((subItem) => {
-                    return (
-                      <NavigationMenuLink
-                        asChild
-                        key={subItem.id}
-                        className={navigationMenuTriggerStyle()}
-                      >
-                        <CMSLink key={i} {...subItem.link} appearance="link" />
-                      </NavigationMenuLink>
-                    )
-                  })}
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+              <div className="hidden md:relative md:block group" key={menu.id}>
+                <div className="p-4">{menu.title}</div>
+                <div
+                  className="absolute invisible group-hover:visible mt-1.5 z-10 w-48 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
+                  role="menu"
+                >
+                  <div className="p-2">
+                    {menu.links.map((subItem) => {
+                      return (
+                        <CMSLink
+                          key={subItem.id}
+                          {...subItem.link}
+                          appearance="link"
+                          className="block rounded-lg px-4 py-2 text-sm"
+                        />
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
             )
           })}
-        </NavigationMenuList>
-      </NavigationMenu>
+        </div>
+      </nav>
     </div>
   )
 }

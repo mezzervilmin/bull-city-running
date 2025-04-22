@@ -30,12 +30,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   return (
-    <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="py-8 flex">
-        <Link href="/">
+    <header className="bg-white">
+      <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-12 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="block">
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />
         </Link>
         <HeaderNav data={data} />
+        {/* Need to add mobile menu */}
       </div>
     </header>
   )
