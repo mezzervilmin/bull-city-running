@@ -6,9 +6,18 @@ import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 
-export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText, media }) => {
+export const CallToActionBlock: React.FC<CTABlockProps> = ({
+  links,
+  richText,
+  media,
+  backgroundColor,
+}) => {
+  const bgClass =
+    backgroundColor === 'blue'
+      ? 'bg-gradient-to-r from-cyan-500 to-blue-500'
+      : ' bg-gradient-to-r from-red-500 to-orange-500'
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className={`hero ${bgClass} min-h-screen`}>
       <div className="hero-content flex-col lg:flex-row">
         {media && typeof media === 'object' && (
           <Media

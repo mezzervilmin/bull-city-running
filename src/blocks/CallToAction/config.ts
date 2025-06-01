@@ -14,6 +14,12 @@ export const CallToAction: Block = {
   interfaceName: 'CallToActionBlock',
   fields: [
     {
+      name: 'backgroundColor',
+      type: 'radio',
+      options: ['blue', 'orange'],
+      defaultValue: 'blue',
+    },
+    {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({
@@ -28,18 +34,18 @@ export const CallToAction: Block = {
       }),
       label: false,
     },
-    linkGroup({
-      appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 2,
-      },
-    }),
     {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
       required: true,
     },
+    linkGroup({
+      appearances: ['default', 'outline'],
+      overrides: {
+        maxRows: 2,
+      },
+    }),
   ],
   labels: {
     plural: 'Calls to Action',

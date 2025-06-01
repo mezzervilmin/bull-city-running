@@ -393,6 +393,7 @@ export interface User {
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
+  backgroundColor?: ('blue' | 'orange') | null;
   richText?: {
     root: {
       type: string;
@@ -408,6 +409,7 @@ export interface CallToActionBlock {
     };
     [k: string]: unknown;
   } | null;
+  media: string | Media;
   links?:
     | {
         link: {
@@ -432,7 +434,6 @@ export interface CallToActionBlock {
         id?: string | null;
       }[]
     | null;
-  media: string | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
@@ -1096,7 +1097,9 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "CallToActionBlock_select".
  */
 export interface CallToActionBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   richText?: T;
+  media?: T;
   links?:
     | T
     | {
@@ -1112,7 +1115,6 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
-  media?: T;
   id?: T;
   blockName?: T;
 }

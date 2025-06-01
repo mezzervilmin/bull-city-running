@@ -1,5 +1,6 @@
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
+import daisyui from 'daisyui'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -10,7 +11,7 @@ const config = {
     './src/**/*.{ts,tsx}',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography],
+  plugins: [tailwindcssAnimate, typography, daisyui],
   prefix: '',
   safelist: [
     'lg:col-span-4',
@@ -111,8 +112,6 @@ const config = {
         DEFAULT: {
           css: [
             {
-              '--tw-prose-body': 'var(--text)',
-              '--tw-prose-headings': 'var(--text)',
               h1: {
                 fontWeight: 'normal',
                 marginBottom: '0.25em',
