@@ -432,6 +432,7 @@ export interface CallToActionBlock {
         id?: string | null;
       }[]
     | null;
+  media: string | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
@@ -1111,6 +1112,7 @@ export interface CallToActionBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  media?: T;
   id?: T;
   blockName?: T;
 }

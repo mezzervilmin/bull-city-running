@@ -16,14 +16,14 @@ export const Logo = (props: Props) => {
   return (
     /* eslint-disable @next/next/no-img-element */
     <img
-      alt="Payload Logo"
+      alt="Bull City Running Co. Logo"
       width={193}
       height={34}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('max-w-[9.375rem] w-full h-[34px]', className)}
-      src="https://raw.githubusercontent.com/payloadcms/payload/main/packages/ui/src/assets/payload-logo-light.svg"
+      className={clsx('max-w-[9.375rem] w-full h-[48px]', className)}
+      src="https://mvhctqvavykuqrxddjyp.supabase.co/storage/v1/object/sign/bcrc/media/bullcity_logo.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iM2M1Y2QyMy0xYTBmLTRlNzgtYjY0NS1hYWMyNGZmYzIzYzYiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJiY3JjL21lZGlhL2J1bGxjaXR5X2xvZ28ucG5nIiwiaWF0IjoxNzQ4ODA2MjY4LCJleHAiOjQ5MDI0MDYyNjh9.9VfwhUnDdRAZShe67o0vYXwagXHMXrUvLrYi1vX3A0g"
     />
   )
 }

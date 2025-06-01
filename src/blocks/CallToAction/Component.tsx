@@ -4,17 +4,25 @@ import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
 
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+import { Media } from '@/components/Media'
 
-export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
+export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText, media }) => {
   return (
-    <div className="container">
-      <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
-        <div className="max-w-[48rem] flex items-center">
-          {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
-        </div>
-        <div className="flex flex-col gap-8">
+    <div className="hero bg-base-200 min-h-screen">
+      <div className="hero-content flex-col lg:flex-row">
+        {media && typeof media === 'object' && (
+          <Media
+            pictureClassName="w-fit"
+            imgClassName="max-w-sm rounded-lg shadow-2xl"
+            resource={media}
+          />
+        )}
+        <div>
+          <div className="py-6">
+            {richText && <RichText className="mb-0" data={richText} enableGutter />}
+          </div>
           {(links || []).map(({ link }, i) => {
-            return <CMSLink key={i} size="lg" {...link} />
+            return <CMSLink key={i} size="lg" className="btn btn-primary" {...link} />
           })}
         </div>
       </div>

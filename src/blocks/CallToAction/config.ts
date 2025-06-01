@@ -34,6 +34,12 @@ export const CallToAction: Block = {
         maxRows: 2,
       },
     }),
+    {
+      name: 'media',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
   ],
   labels: {
     plural: 'Calls to Action',
