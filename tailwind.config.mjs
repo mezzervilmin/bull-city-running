@@ -10,7 +10,6 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-  darkMode: ['selector', '[data-theme="dark"]'],
   plugins: [tailwindcssAnimate, typography, daisyui],
   prefix: '',
   safelist: [
@@ -95,8 +94,8 @@ const config = {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-chango)'],
+        sans: ['var(--font-chango)'],
       },
       keyframes: {
         'accordion-down': {
@@ -112,6 +111,8 @@ const config = {
         DEFAULT: {
           css: [
             {
+              '--tw-prose-invert-body': 'var(--text)',
+              '--tw-prose-invert-headings': 'var(--text)',
               h1: {
                 fontWeight: 'normal',
                 marginBottom: '0.25em',

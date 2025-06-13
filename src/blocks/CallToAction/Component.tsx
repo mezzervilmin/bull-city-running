@@ -18,7 +18,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
       : ' bg-gradient-to-r from-red-500 to-orange-500'
   return (
     <div className={`hero ${bgClass} min-h-screen`}>
-      <div className="hero-content flex-col lg:flex-row">
+      <div className="hero-content flex-col lg:flex-row p-0">
         {media && typeof media === 'object' && (
           <Media
             pictureClassName="w-fit"
@@ -27,12 +27,29 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
           />
         )}
         <div>
-          <div className="py-6">
-            {richText && <RichText className="mb-0" data={richText} enableGutter />}
+          <div className="pt-6">
+            {richText && (
+              <RichText
+                className="mb-0 text-center md:text-left"
+                data={richText}
+                enableGutter
+                makeWhite
+              />
+            )}
           </div>
-          {(links || []).map(({ link }, i) => {
-            return <CMSLink key={i} size="lg" className="btn btn-primary" {...link} />
-          })}
+          <div className="flex flex-wrap justify-center md:justify-start gap-8 md:container">
+            {(links || []).map(({ link }, i) => {
+              return (
+                <CMSLink
+                  key={i}
+                  size="lg"
+                  appearance="secondary"
+                  className="btn w-48 btn-white"
+                  {...link}
+                />
+              )
+            })}
+          </div>
         </div>
       </div>
     </div>

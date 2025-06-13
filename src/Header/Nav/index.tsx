@@ -10,18 +10,15 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
 
   return (
-    <div className="flex flex-1 items-center justify-end md:justify-between">
-      <nav aria-label="Global" className="hidden md:block">
-        <div className="flex items-center gap-8 text-sm">
-          {navItems.map((menu) => {
-            return (
-              <div className="hidden md:relative md:block group" key={menu.id}>
-                <div className="p-4">{menu.title}</div>
-                <div
-                  className="absolute invisible group-hover:visible mt-1.5 z-10 w-48 divide-y divide-gray-100 rounded-md border border-gray-100 bg-white shadow-lg"
-                  role="menu"
-                >
-                  <div className="p-2">
+    <div aria-label="Global" className="navbar-center hidden lg:flex">
+      <ul className="menu menu-horizontal px-1">
+        {navItems.map((menu) => {
+          return (
+            <li className="hidden md:relative md:block group" key={menu.id}>
+              <details name="nav-group">
+                <summary>{menu.title}</summary>
+                <ul className="bg-base-100 rounded-t-none p-2" role="menu">
+                  <li>
                     {menu.links.map((subItem) => {
                       return (
                         <CMSLink
@@ -32,13 +29,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                         />
                       )
                     })}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </nav>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }
